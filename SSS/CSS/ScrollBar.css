@@ -1,0 +1,60 @@
+
+/* Стилизация скроллбара для WebKit браузеров (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+	width: 16px; /* Ширина вертикального скроллбара */
+	height: 16px; /* Высота горизонтального скроллбара */
+  }
+  
+  /* Дорожка скроллбара */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
+	box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Ползунок скроллбара */
+  ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #FFD700, #FFA500, #FF4500);
+	border-radius: 10px;
+	border: 3px solid transparent;
+	background-clip: content-box;
+	transition: all 0.3s ease;
+  }
+  
+  /* Угол скроллбара (необязательно) */
+  ::-webkit-scrollbar-corner {
+	background: #f1f1f1;
+  }
+  
+  /* Эффекты при наведении */
+  ::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(135deg, #FFC000, #FF8C00, #FF2800);
+	border: 2px solid transparent;
+  }
+  
+  /* Для Firefox */
+  * {
+	scrollbar-width: auto;
+	scrollbar-color: #FFA500 #f1f1f1;
+  }
+  
+  /* Дополнительные эффекты для Firefox */
+  html {
+	scrollbar-width: thick;
+	scrollbar-color: #FFA500 #f1f1f1;
+  }
+  
+  /* Анимация при скролле */
+  body {
+	scroll-behavior: smooth;
+  }
+  
+  /* Нестандартный эффект - градиентная тень */
+  ::-webkit-scrollbar-thumb:active {
+	box-shadow: inset 0 0 10px rgba(255,215,0,0.5);
+  }
+  
+  /* Стилизация при фокусе (для доступности) */
+  ::-webkit-scrollbar-thumb:focus {
+	outline: 2px solid rgba(255,165,0,0.5);
+  }

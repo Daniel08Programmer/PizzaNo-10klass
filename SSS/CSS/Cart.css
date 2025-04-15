@@ -1,0 +1,109 @@
+.cart{
+	border: 3px solid orange;
+	border-radius: 10px;
+	text-align: center;
+	/* display: flex; */
+	/* float: left; */
+	max-width: 225px;
+	background-color: rgba(255, 255, 1, 0.1);
+	margin: 20px;
+	font-size: 35px;
+}
+
+.Pizzas{ 
+	width: 225px; 
+	/* 250 px */
+	border-radius: 170px  170px;
+}
+
+.NamePiz{
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+#slash{
+	font-size: 25px;
+	vertical-align: 2px;
+	font-weight: normal;
+}
+
+.size{
+	display: inline-block;
+	padding: 0px 15px 0px 15px;
+	border-radius: 10px;
+	border: 3px orange solid;
+	/* font-weight: 900; */
+}
+
+.dia{
+	font-size: 23px;
+	vertical-align: 4px;
+}
+
+.weight{
+	font-size: 23px;
+	width: 50px;
+	text-align: center;
+	vertical-align: 4px;
+}
+
+
+
+.main-counter{
+	display:inline-block;
+	vertical-align: text-top;
+	margin-top: 10px;
+	max-width: 120px;
+	height: 36px;
+	margin-bottom: 8px;
+ 	/*border: 5px solid orange;
+	border-radius: 20px;
+	background-color: rgb(255,186,59, 0.8); */
+
+}
+
+.button{
+	border-color: orange;
+	width:25px;
+	height: 30px;
+	display: inline-block;
+	margin-bottom: 10px;
+	vertical-align: text-top;
+	margin-top: 4px;
+}
+
+#NoumberOne{
+	border-radius: 8px 0px 0px 8px;
+}
+
+.counter{
+	display: inline-block;
+	font-size: 30px;
+	vertical-align: text-top;
+}
+
+#NoumberTwo{
+	border-radius: 0px 8px 8px 0px;
+}
+
+
+.price{
+	color: green;
+	font-size:30px;
+	margin-left: 1rem;
+	display: inline-block;
+	vertical-align: -7px;
+
+}
+
+.InBasket{
+	width: 200px;
+	height: 35px;
+	border-radius: 5px;
+	border-color: orange;
+	background-color: rgba(255, 255, 1, 0.3);
+	color: rgba(250, 60, 0, 1);
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+

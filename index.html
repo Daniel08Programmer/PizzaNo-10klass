@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>PizzaNo</title>
+		<link rel="shortcut icon" href="SSS\images\p2.png">
+		<link rel="stylesheet" href="SSS\CSS\dec.css">
+		<link rel="stylesheet" href="SSS\CSS\VisitCard.css">
+		<link rel="stylesheet" href="SSS\CSS\cartBasket.css">
+		<link rel="stylesheet" href="SSS\CSS\Cart.css">
+		<link rel="stylesheet" href="SSS\CSS\OrderDec.css">
+		<!-- <link rel="stylesheet" href="SSS\CSS\Header.css"> -->
+		<link rel="stylesheet" href="SSS\CSS\NewHeader.css">
+		<link rel="stylesheet" href="SSS\CSS\Table.css">
+		<link rel="stylesheet" href="SSS\CSS\ScrollBar.css">
+		<!-- <link rel="stylesheet" href="SSS\CSS\FinalFooter.css"> -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link href="">
+<style>
+		:root {
+			--orange-main: #FF6B00;
+			--orange-light: #FF8C00;
+			--orange-dark: #E55D00;
+			--text-dark: #333;
+			--text-light: #FFF;
+		}
+		
+		/* Основные стили футера */
+		.footer-container {
+			background: linear-gradient(135deg, var(--orange-main), var(--orange-dark));
+			color: var(--text-light);
+			padding: 40px 20px;
+			font-family: 'Arial', sans-serif;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.footer-wave {
+			position: absolute;
+			top: -20px;
+			left: 0;
+			width: 100%;
+			height: 20px;
+			background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23ffffff" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23ffffff"/></svg>');
+			background-size: cover;
+		}
+		
+		.footer-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 30px;
+		}
+		
+		/* Секция рейтинга */
+		.rating-section {
+			text-align: center;
+			padding: 20px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 15px;
+			backdrop-filter: blur(5px);
+			transition: all 0.3s ease;
+		}
+		
+		.rating-section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+		}
+		
+		.rating-title {
+			font-size: 1.5rem;
+			margin-bottom: 15px;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+		}
+		
+		.rating {
+			display: flex;
+			justify-content: center;
+			margin: 15px 0;
+		}
+		
+		.star {
+			font-size: 2.5rem;
+			color: rgba(255, 255, 255, 0.3);
+			cursor: pointer;
+			transition: all 0.2s;
+			margin: 0 5px;
+			text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+		}
+		
+		.star:hover {
+			transform: scale(1.2) rotate(10deg);
+		}
+		
+		.star.active {
+			color: gold;
+			text-shadow: 0 0 15px gold;
+			animation: starPulse 0.5s ease;
+		}
+		
+		@keyframes starPulse {
+			0% { transform: scale(1); }
+			50% { transform: scale(1.5); }
+			100% { transform: scale(1.2); }
+		}
+		
+		/* Секция контактов */
+		.contact-section {
+			padding: 20px;
+		}
+		
+		.contact-title {
+			font-size: 1.5rem;
+			margin-bottom: 20px;
+			font-weight: bold;
+			position: relative;
+			display: inline-block;
+		}
+		
+		.contact-title:after {
+			content: '';
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			width: 50px;
+			height: 3px;
+			background: var(--text-light);
+			border-radius: 3px;
+		}
+		
+		.contact-methods {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+		
+		.contact-item {
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+		}
+		
+		.contact-item:hover {
+			transform: translateX(10px);
+		}
+		
+		.contact-icon {
+			width: 40px;
+			height: 40px;
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 15px;
+			font-size: 1.2rem;
+			transition: all 0.3s ease;
+		}
+		
+		.contact-item:hover .contact-icon {
+			background: var(--text-light);
+			color: var(--orange-main);
+			transform: rotate(15deg);
+		}
+		
+		.contact-text {
+			font-size: 1.1rem;
+		}
+		
+		/* Секция соцсетей */
+		.social-section {
+			padding: 20px;
+			text-align: center;
+		}
+		
+		.social-title {
+			font-size: 1.5rem;
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		
+		.social-icons {
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+			flex-wrap: wrap;
+		}
+		
+		.social-icon {
+			width: 50px;
+			height: 50px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.5rem;
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.social-icon:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+			transition: 0.5s;
+		}
+		
+		.social-icon:hover {
+			transform: translateY(-5px) scale(1.1);
+			background: var(--text-light);
+			color: var(--orange-main);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+		}
+		
+		.social-icon:hover:before {
+			left: 100%;
+		}
+		
+		/* Кнопка "Наверх" */
+		.back-to-top {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			width: 60px;
+			height: 60px;
+			background: var(--orange-main);
+			color: white;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.5rem;
+			cursor: pointer;
+			z-index: 99;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+		}
+		
+		.back-to-top.active {
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		.back-to-top:hover {
+			background: var(--orange-light);
+			transform: translateY(-5px);
+		}
+		
+		/* Нижняя часть футера */
+		.footer-bottom {
+			text-align: center;
+			margin-top: 40px;
+			padding-top: 20px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			font-size: 0.9rem;
+		}
+		
+		.creator {
+			margin-top: 10px;
+			font-style: italic;
+			opacity: 0.8;
+		}
+		
+		/* Анимации */
+		@keyframes float {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(-10px); }
+		}
+		
+		.floating {
+			animation: float 3s ease-in-out infinite;
+		}
+		
+		/* Адаптивность */
+		@media (max-width: 768px) {
+			.footer-content {
+				grid-template-columns: 1fr;
+			}
+			
+			.social-icons {
+				gap: 15px;
+			}
+			
+			.back-to-top {
+				width: 50px;
+				height: 50px;
+				bottom: 20px;
+				right: 20px;
+			}
+		}
+</style>
+	</head>
+	
+	<body class="main" id="start">
+
+
+		<!-- Хэдер -->
+		<header class="pizza-header">
+			
+	
+			<div class="header-container">
+				<!-- Логотип и название -->
+				<div class="logo-section">
+					<img src="SSS/images/Tower.png" alt="PizzaNo" class="logo-img">
+					<div class="logo-text">
+						<span>Pi</span><span>zza</span><span>No</span>
+						
+					</div>
+					<!-- <div class="slogan">Сытно и вкусно!</div> -->
+				</div>
+	
+				<!-- Навигация -->
+				<div class="nav-section">
+					<a href="Вакансии.html" target="_blank" class="nav-btn"><i class="fas fa-briefcase"></i> Вакансии</a>
+					<a href="#Pizza" class="nav-btn"><i class="fas fa-pizza-slice"></i> Пиццы</a>
+					<a href="#Drink" class="nav-btn"><i class="fas fa-glass-whiskey"></i> Напитки</a>
+					<a href="Акции.html" target="_blank" class="nav-btn"><i class="fas fa-percentage"></i> Акции</a>
+					<a href="О нас.html" target="_blank" class="nav-btn"><i class="fas fa-info-circle"></i> О нас</a>
+				</div>
+	
+				<!-- Слоган -->
+				
+			</div>
+		</header>	
+		
+	</div>
+
+	<article>
+		
+<section>
+	<div class="titles" ><h1>Пиццы</h1></div>
+
+		<div class="cards" id="products-container">
+
+		
+
+		<div id="Pizza">
+
+			
+
+			<div data-id="01" class="cart product-cart" data-gavaiskaya >
+				<span data-structure="Ананас, белый соус, курица, сыр моцарелла"><img  class="Pizzas" src="SSS/images/Гавайская.png"></span>
+				<div  class="NamePiz">Гавайская </div>
+					<div class="size">
+						<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">290 г</span> <br> 
+					</div>
+					<br>
+					<div class="main-counter">
+						<button id="NoumberOne" class="button" data-action="minus">-</button> 
+						<div class="counter" data-counter>1</div>
+						<button id="NoumberTwo" class="button" data-action="plus">+</button>
+					</div>
+					<div class="price">210 ₽</div>
+
+				<form>
+					<input type="button"  value="+ в корзину" class="InBasket" data-basket>
+				</form>
+				
+			</div>
+			
+
+			<div data-id="02" class="cart product-cart" >
+				<span data-structure="Сосиски, пицца-соус, , пепперони, помидор, сыр моцарелла"><img  class="Pizzas" src="SSS/images/ohota.png"></span>
+				<div class="NamePiz">Охотничья </div>
+				<div class="size">
+					<span class="dia">35 см</span> 
+					<span id="slash">/</span> <span class="weight">280 г</span>
+				</div> 
+				<br>
+				<div  class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button> 
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>
+				</div>	
+				<div class="price">250 ₽</div>
+
+				<form>
+					<input type="button"  value="+ в корзину" class="InBasket" data-basket="bas">
+				</form>
+
+			</div>
+			
+
+			<div data-id="03" class="cart product-cart" >
+				<span data-structure="Пепперони, белый соус, красный перец, маслины, шампиньоны, сыр камамбер"> <img class="Pizzas" src="SSS/images/p2.png"></span>
+				<div class="NamePiz">Бьянко </div>
+			<div class="size">
+				<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">370 г</span> <br> 
+			</div>
+			<br>
+				<div class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button>
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>		
+				</div>
+				<div class="price">290 ₽</div>
+				<button class="InBasket" data-basket> + в корзину </button>
+			</div>
+			
+
+			<div data-id="04" class="cart product-cart" >
+				<span data-structure="Охотничьи колбаски, ветчина, пепперони, пицца-соус, маслины нарезные, солённый огурец, сыр панини"> <img class="Pizzas" src="SSS/images/p3.png"></span>
+				<div  class="NamePiz">Мясная </div>
+				<div class="size">
+					<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">410 г</span> <br> 
+				</div>
+				<br>
+				<div  class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button> 
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>
+				</div>
+				<div class="price">330 ₽</div>
+				<button class="InBasket" data-basket> + в корзину </button>
+			</div>
+			
+			
+
+			<div data-id="05" class="cart product-cart" >
+				<span data-structure="Шампиньоны, зелень, сыр камамбер"> <img class="Pizzas" src="SSS/images/gribi.png"></span>
+				<div  class="NamePiz">Грибная </div>
+				<div class="size">
+					<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">350 г</span> <br> 
+				</div>
+				<br>
+				<div  class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button> 
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>
+				</div>
+				<div class="price">270 ₽</div>
+				<button class="InBasket" data-basket> + в корзину </button>
+			</div>
+
+			<div data-id="06" class="cart product-cart" >
+				<span data-structure="Салат, белый соус, помидор, курица, сухарики "> <img class="Pizzas" src="SSS/images/Zhezar.png"></span>
+				<div  class="NamePiz">Цезарь </div>
+				<div class="size">
+					<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">320 г</span> <br> 
+				</div>
+				<br>
+				<div  class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button> 
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>
+				</div>
+				<div class="price">300 ₽</div>
+				<button class="InBasket" data-basket> + в корзину </button>
+			</div>
+		
+			<div data-id="07" class="cart product-cart" >
+				<span data-structure="Пепперони, шампиньоны, ветчина, маслины нарезные, помидор, сыр камамбер"> <img class="Pizzas" src="SSS/images/FourSeasons.png"></span>
+				<div  class="NamePiz">4 Сезона</div>
+				<div class="size">
+					<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">380 г</span> <br> 
+				</div>
+				<br>
+
+				<div  class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button> 
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>
+				</div>
+				<div class="price">450 ₽</div>
+				<button class="InBasket" data-basket> + в корзину </button>
+			</div>
+
+			<div data-id="08" class="cart product-cart" >
+				<span data-structure="Ветчина, белый соус, перец красный, сыр моцарелла"> <img class="Pizzas" src="SSS/images/ChickenR.png"></span>
+				<div  class="NamePiz">Чикен Ранч</div>
+				<div class="size">
+					<span class="dia">35 см</span> <span id="slash">/</span> <span class="weight">300 г</span> <br> 
+				</div>
+				<br>
+				<div  class="main-counter">
+					<button id="NoumberOne" class="button" data-action="minus">-</button> 
+					<div class="counter" data-counter>1</div>
+					<button id="NoumberTwo" class="button" data-action="plus">+</button>
+				</div>
+				<div class="price">310 ₽</div>
+				<button class="InBasket" data-basket> + в корзину </button>
+			</div>
+
+			</div>
+
+			<span class="titles" ><h1>Напитки</h1></span>
+
+			<div id="Drink">
+				
+
+				<div  data-id="09" class="cart product-cart" >
+					<span data-structure="Газированный безалкогольный прохлождающий напиток со вкусом колы"> <img class="Pizzas" src="SSS/images/CocaLoca.png"></span>
+					<div  class="NamePiz">Кока Лока</div>
+					<div class="size">
+						<span class="dia">300 мл</span> <span id="slash">/</span> <span class="weight">300 г</span> <br> 
+					</div>
+					<br>
+					<div  class="main-counter">
+						<button id="NoumberOne" class="button" data-action="minus">-</button> 
+						<div class="counter" data-counter>1</div>
+						<button id="NoumberTwo" class="button" data-action="plus">+</button>
+					</div>
+					<div class="price">110 ₽</div>
+					<button class="InBasket" data-basket> + в корзину </button>
+				</div>
+
+				<div data-id="10" class="cart product-cart" >
+					<span data-structure="Газированный безалкогольный прохлождающий напиток со вкусом лайма и лимона"> <img class="Pizzas" src="SSS/images/Sprinte.png"></span>
+					<div  class="NamePiz">Спритэ</div>
+					<div class="size">
+						<span class="dia">300 мл</span> <span id="slash">/</span> <span class="weight">300 г</span> <br> 
+					</div>
+					<br>
+					<div  class="main-counter">
+						<button id="NoumberOne" class="button" data-action="minus">-</button> 
+						<div class="counter" data-counter>1</div>
+						<button id="NoumberTwo" class="button" data-action="plus">+</button>
+					</div>
+					<div class="price">110 ₽</div>
+					<button class="InBasket" data-basket> + в корзину </button>
+				</div>
+
+				<div data-id="11" class="cart product-cart" >
+					<span data-structure="Сладкий лимонный холодный чай"> <img class="Pizzas" src="SSS/images/Lipton.png"></span>
+					<div  class="NamePiz">Лайптон</div>
+					<div class="size">
+						<span class="dia">300 мл</span> <span id="slash">/</span> <span class="weight">300 г</span> <br> 
+					</div>
+					<br>
+					<div  class="main-counter">
+						<button id="NoumberOne" class="button" data-action="minus">-</button> 
+						<div class="counter" data-counter>1</div>
+						<button id="NoumberTwo" class="button" data-action="plus">+</button>
+					</div>
+					<div class="price">110 ₽</div>
+					<button class="InBasket" data-basket> + в корзину </button>
+				</div>
+
+				<div data-id="12" class="cart product-cart" >
+					<span data-structure="Газированный безалкогольный прохлождающий напиток со вксуом апельсина"> <img class="Pizzas" src="SSS/images/Fanta.png"></span>
+					<div  class="NamePiz">Фантазия</div>
+					<div class="size">
+						<span class="dia">150 мл</span> <span id="slash">/</span> <span class="weight">150 г</span> <br> 
+					</div>
+					<br>
+					<div  class="main-counter">
+						<button id="NoumberOne" class="button" data-action="minus">-</button> 
+						<div class="counter" data-counter>1</div>
+						<button id="NoumberTwo" class="button" data-action="plus">+</button>
+					</div>
+					<div class="price">60 ₽</div>
+					<button class="InBasket" data-basket> + в корзину </button>
+				</div>
+
+			</div>
+
+			
+		</div>
+	</section>
+
+	<section>
+		<div class="VisitCart ">
+			<div class="titles" data-cart-order><h1>Ваш заказ:</h1></div>
+			
+				<div class="Products">
+					<div class="basket" data-basket-empty >Корзина пуста</div>
+						<div class="cart-wrapper" ></div>
+						<div class="purchase invisible"  data-cart-delivery>
+							
+							<div class="delivery">
+								<span >Доставка:</span>
+								<span class="" data-delivery-price> 200 ₽</span>
+								<div class="FreeDelivery">бесплатно при заказе от 750 ₽</div>	
+							</div>
+							
+						<div class="wd">Итого:
+							<span class="result">0</span>
+							<span class="result">₽</span>
+						</div>
+						<div  class="order-form">
+							<div  class="Arrange">Оформить заказ:</div>
+							<input class="Number" type="telr" minlength="11" maxlength="11" placeholder="Напишите номер телефона" /> <br>
+							<button class="Buy" href=""> Заказать </button>
+						</div>
+					</div>
+				</div>
+			
+		</div>
+	</section>
+
+</article>
+
+
+
+		<div class="footer-container">
+			<div class="footer-wave"></div>
+			<div class="footer-content">
+				<!-- Секция рейтинга -->
+				<div class="rating-section floating">
+					<div class="rating-title">Понравился сайт?</div>
+					<div class="rating-title">Оцените нас!</div>
+					<div class="rating">
+						<div class="star" data-value="1">★</div>
+						<div class="star" data-value="2">★</div>
+						<div class="star" data-value="3">★</div>
+						<div class="star" data-value="4">★</div>
+						<div class="star" data-value="5">★</div>
+					</div>
+					<div class="result">Ваша оценка важна для нас!</div>
+				</div>
+	
+				<!-- Секция контактов -->
+				<div class="contact-section">
+					<div class="contact-title">Свяжитесь с нами</div>
+					<div class="contact-methods">
+						<div class="contact-item">
+							<div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+							<div class="contact-text">+7 (999) 123-45-67</div>
+						</div>
+						<div class="contact-item">
+							<div class="contact-icon"><i class="fas fa-envelope"></i></div>
+							<div class="contact-text">pizzano@example.com</div>
+						</div>
+						<div class="contact-item">
+							<div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+							<div class="contact-text">село Высокая Гора, ул. Центральная, 15</div>
+						</div>
+						<div class="contact-item">
+							<div class="contact-icon"><i class="fas fa-clock"></i></div>
+							<div class="contact-text">Ежедневно с 10:00 до 22:00</div>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Секция соцсетей -->
+				<div class="social-section">
+					<div class="social-title">Мы в соцсетях</div>
+					<div class="social-icons">
+						<a href="#" class="social-icon"><i class="fab fa-vk"></i></a>
+						<a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+						<a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+					</div>
+					<div style="margin-top: 20px;">
+						<p>Подпишитесь на наши новости и акции!</p>
+					</div>
+				</div>
+			</div>
+	
+			<!-- Нижняя часть футера -->
+			<div class="footer-bottom">
+				<p>© 2023 PizzaNo. Все права защищены.</p>
+				<p class="creator">МБОУ Высокогорская СОШ №2<br>Создатель сайта: Максимов Даниэль</p>
+			</div>
+		</div>
+	
+		<!-- Кнопка "Наверх" -->
+		<div class="back-to-top" id="backToTop">
+			<i class="fas fa-arrow-up"></i>
+		</div>
+
+		 <!-- Локальные изображения -->
+		 <img src="SSS/images/wave-pattern.png" alt="Wave" style="display:none;">
+		 <img src="images/pizza-icon.png" alt="Pizza" style="display:none;">
+
+		<script src="./JS/Stars.js"></script>
+		<script src="./JS/selectDiameter.js"></script>
+		<script src="./JS/renderProducts.js"></script>
+		<script src="./JS/cart02.js"></script>
+		<script src="./JS/basket01.js"></script>
+		<script src="./JS/toggleCartStatus.js"></script>
+		<script src="./JS/calcCartPrice.js"></script>
+	</body>
+
+
+</html>

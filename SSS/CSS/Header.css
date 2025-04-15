@@ -1,0 +1,47 @@
+.header{
+	text-align: center;	
+	/* font-size: 30px; */
+	font-style: italic;
+/*      
+    background-image: url("SHT.png");
+	background-size:cover;       Растягивает изображение на всю область
+    background-position: center;  Центрирует изображение
+    background-repeat: no-repeat; Отключает повторение 
+    background-attachment: fixed; Фиксирует фон при прокрутке (опционально)
+     */
+}
+.Pis{
+    margin: 35px;
+    margin-top: 80px;
+	text-align: center;
+	border-radius: 60px ;
+	width: 220px;
+	transition: transform 2s ease;
+}
+
+.Pis:hover{
+	transform: scale(1.65);
+	/* width: 250px; */
+}
+
+h1{
+    margin: 10px;
+}
+
+.mainTitle{
+    font-size: 100px;
+	margin: 10px;
+}
+
+.Undhead{
+	font-size: 40px;
+    margin-top: 10px;
+}
+
+#Pi{
+    color: green;
+    }
+    #No{
+     color: red;
+    }
+

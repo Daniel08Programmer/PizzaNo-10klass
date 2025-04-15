@@ -1,0 +1,51 @@
+.cartBasket{
+	/* float: left; */
+	width: 270px;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-right: 20px;
+	padding: 10px;
+	border: 4px solid orange;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.NamePizBas{
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 8px;
+	color:rgb(255,123,0);
+}
+
+.PizzasBasket{ 
+	width: 120px;
+	height: 120px;
+	float: left;
+	margin-right: 10px;
+}
+
+.ItemInfo{
+	font-size: 22px;
+	vertical-align: -15px;
+}
+
+.diaBas{
+	margin-bottom: 8px;
+}
+
+#sl{
+	font-weight: bold;
+}
+
+.weightBas{
+	margin-bottom: 8px;
+	display: inline-block;
+}
+
+.priceBas{
+	display: inline-block;
+	color: green;
+	border: 1px solid red;
+	padding: 3px;
+	border-radius: 5px;
+}

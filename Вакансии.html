@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="SSS\images\icon vak.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вакансии в пиццерии</title>
+    <style>
+        /* Основные стили */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFF5E6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pizza-vacancies {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .vacancies-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .vacancies-header h2 {
+            font-size: 2.8rem;
+            color: #E74C3C;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .vacancies-header h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #F39C12;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .vacancies-header p {
+            font-size: 1.2rem;
+            color: #7F8C8D;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Стили для карточек вакансий */
+        .vacancies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .vacancy-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #E74C3C;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vacancy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .vacancy-card:hover:before {
+            content: '🍕';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            right: -20px;
+            bottom: -20px;
+            z-index: 0;
+        }
+        
+        .vacancy-title {
+            font-size: 1.8rem;
+            color: #E74C3C;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .vacancy-salary {
+            display: inline-block;
+            background: #FDEBD0;
+            color: #E67E22;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .vacancy-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .vacancy-features {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .vacancy-features h4 {
+            color: #E74C3C;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .vacancy-features h4:before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 3px;
+            background: #F39C12;
+            margin-right: 10px;
+        }
+        
+        .vacancy-features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .vacancy-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .vacancy-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27AE60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .apply-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #E74C3C, #F39C12);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .apply-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #F39C12, #E74C3C);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .apply-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+        
+        .apply-button:hover:before {
+            left: 0;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .vacancies-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .vacancies-header h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .vacancy-card {
+            animation: slideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+        }
+        
+        .vacancy-card:nth-child(1) { animation-delay: 0.1s; }
+        .vacancy-card:nth-child(2) { animation-delay: 0.2s; }
+        .vacancy-card:nth-child(3) { animation-delay: 0.3s; }
+        .vacancy-card:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* Дополнительные декоративные элементы */
+        .pizza-icon {
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .pizza-icon.top-left {
+            top: 20px;
+            left: 20px;
+        }
+        
+        .pizza-icon.bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="pizza-vacancies">
+        <div class="vacancies-header">
+            <span class="pizza-icon top-left">🍕</span>
+            <h2>Работа в нашей пиццерии</h2>
+            <p>Стань частью нашей дружной команды и научись готовить лучшую пиццу в городе!</p>
+            <span class="pizza-icon bottom-right">🍕</span>
+        </div>
+        
+        <div class="vacancies-container">
+            <!-- Вакансия 1 -->
+            <div class="vacancy-card">
+                <h3 class="vacancy-title">Пиццамейкер</h3>
+                <span class="vacancy-salary">от 40 000 ₽</span>
+                <p class="vacancy-description">Ищем талантливого пиццамейкера для приготовления наших фирменных пицц по традиционным рецептам.</p>
+                
+                <div class="vacancy-features">
+                    <h4>Что мы предлагаем:</h4>
+                    <ul>
+                        <li>Обучение у лучших мастеров</li>
+                        <li>Гибкий график работы</li>
+                        <li>Бесплатное питание в смену</li>
+                        <li>Карьерный рост</li>
+                        <li>Премии за качество</li>
+                    </ul>
+                </div>
+                
+                <div class="vacancy-features">
+                    <h4>Требования:</h4>
+                    <ul>
+                        <li>Опыт не обязателен (научим)</li>
+                        <li>Ответственность и аккуратность</li>
+                        <li>Готовность работать в команде</li>
+                        <li>Любовь к кулинарии</li>
+                    </ul>
+                </div>
+                
+                <a href="#apply" class="apply-button">Хочу работать!</a>
+            </div>
+            
+            <!-- Вакансия 2 -->
+            <div class="vacancy-card">
+                <h3 class="vacancy-title">Доставщик</h3>
+                <span class="vacancy-salary">от 35 000 ₽ + бонусы</span>
+                <p class="vacancy-description">Нужен ответственный доставщик для оперативной доставки горячей пиццы нашим клиентам.</p>
+                
+                <div class="vacancy-features">
+                    <h4>Что мы предлагаем:</h4>
+                    <ul>
+                        <li>Гибкий график работы</li>
+                        <li>Высокие чаевые</li>
+                        <li>Компенсация бензина</li>
+                        <li>Техническая поддержка</li>
+                        <li>Бонусы за скорость</li>
+                    </ul>
+                </div>
+                
+                <div class="vacancy-features">
+                    <h4>Требования:</h4>
+                    <ul>
+                        <li>Водительские права категории B</li>
+                        <li>Знание города</li>
+                        <li>Вежливость и пунктуальность</li>
+                        <li>Ответственное отношение</li>
+                    </ul>
+                </div>
+                
+                <a href="#apply" class="apply-button">Хочу работать!</a>
+            </div>
+            
+            <!-- Вакансия 3 -->
+            <div class="vacancy-card">
+                <h3 class="vacancy-title">Менеджер зала</h3>
+                <span class="vacancy-salary">от 45 000 ₽</span>
+                <p class="vacancy-description">Ищем коммуникабельного менеджера для организации работы зала и обслуживания гостей.</p>
+                
+                <div class="vacancy-features">
+                    <h4>Что мы предлагаем:</h4>
+                    <ul>
+                        <li>Стабильную зарплату</li>
+                        <li>Профессиональный рост</li>
+                        <li>Обучение управлению</li>
+                        <li>Бонусы за отзывы</li>
+                        <li>Дружный коллектив</li>
+                    </ul>
+                </div>
+                
+                <div class="vacancy-features">
+                    <h4>Требования:</h4>
+                    <ul>
+                        <li>Опыт работы в общепите от 1 года</li>
+                        <li>Коммуникабельность</li>
+                        <li>Стрессоустойчивость</li>
+                        <li>Организаторские способности</li>
+                    </ul>
+                </div>
+                
+                <a href="#apply" class="apply-button">Хочу работать!</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,115 @@
+.VisitCart{
+	/* float: right; */
+	max-width: 660px; 
+	/* border: 2px solid grey; */
+	/* border-radius: 5px; */
+	/* margin: 20px; */
+	/* margin-right: 175px; */
+}
+
+.Products{
+	/* display: inline-block; */
+	margin: 10px;
+	border: 2px solid grey; 
+	border-radius: 5px;
+	padding: 10px;
+	max-width: 615px;
+}
+
+.basket{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 10px;
+	color: rgba(50, 50, 50, 1);
+	background-color:  rgba(50, 50, 50, 0.2);
+}
+
+.cart-wrapper{
+	margin-top: 10px;
+	width: 280px;
+}
+
+.purchase{
+	width: 280px;
+}
+
+.invisible{
+	display: none;
+}
+
+.delivery{
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.CartInfo{
+	display: inline; 
+	height: 40px;
+}
+
+.CounterInBas{
+	width: 120px;
+	text-align: center;
+}
+
+.yourOrder{
+	text-align: center;
+	color: crimson;
+	font-size: 22px;
+	/* vertical-align: -20px; */
+}
+
+.cart-wrapper{
+display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+.WrapperSize{
+	width: 350px;
+}
+
+
+.delPri{
+	color: rgba(0, 200, 0, 1);
+}
+
+.FreeDelivery{
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+.wd{
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.result{
+	color:  rgba(237, 118, 14, 1);
+}
+
+.order-form{
+	display:flexbox;
+}
+
+.Arrange{
+	font-size: 18px;
+	margin-top:10px;
+	padding-top: 10px;
+	border-top: 2px solid black;
+}
+
+.Number{
+	margin-top:15px;
+	padding: 5px;
+	border-color: black;
+}
+
+.Buy{
+	margin-top:15px;
+	width: 90px;
+	height: 30px;
+	background-color: rgba(30, 144, 255, 0.8);
+	border-color: gray;
+	border-radius: 5px;
+}

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="SSS\images\Icon AB.png">
+    <title>PizzaNo - Оранжевое настроение с 2008 года</title>
+    <style>
+        :root {
+            --main-orange: #FF8C00;
+            --dark-orange: #E67E22;
+            --light-orange: #FFA726;
+            --cream: #FFF3E0;
+            --white: #FFFFFF;
+            --black: #333333;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: var(--cream);
+            color: var(--black);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--main-orange), var(--light-orange));
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23FFFFFF" stroke-width="2" stroke-dasharray="5,5" opacity="0.2"/></svg>');
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 4.5rem;
+            color: var(--white);
+            margin: 0;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            animation: bounce 2s infinite;
+        }
+        
+        .header p {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin: 10px 0 0;
+        }
+        
+        .pizza-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .pizza-divider .line {
+            flex: 1;
+            height: 4px;
+            background: repeating-linear-gradient(to right, var(--main-orange), var(--main-orange) 10px, var(--cream) 10px, var(--cream) 20px);
+        }
+        
+        .pizza-divider .icon {
+            font-size: 2.5rem;
+            margin: 0 20px;
+            animation: spin 5s linear infinite;
+        }
+        
+        .story-section {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px dashed var(--light-orange);
+            position: relative;
+        }
+        
+        .story-section:after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(255, 167, 38, 0.2);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+        
+        .story-title {
+            font-size: 2.5rem;
+            color: var(--dark-orange);
+            margin-top: 0;
+            text-align: center;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.05);
+        }
+        
+        .highlight {
+            background-color: var(--light-orange);
+            color: var(--white);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .image-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 3px solid var(--white);
+        }
+        
+        .image-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.3);
+            z-index: 1;
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .fun-fact {
+            background: linear-gradient(135deg, var(--dark-orange), var(--main-orange));
+            color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+            transform: rotate(-1deg);
+        }
+        
+        .fun-fact:before {
+            content: "!";
+            position: absolute;
+            font-size: 15rem;
+            right: -30px;
+            top: -30px;
+            opacity: 0.1;
+            font-weight: bold;
+            font-family: serif;
+        }
+        
+        .fun-fact h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            position: relative;
+        }
+        
+        .safety-section {
+            background-color: var(--white);
+            border-left: 8px solid var(--main-orange);
+            padding: 30px;
+            border-radius: 0 20px 20px 0;
+            margin: 50px 0;
+            box-shadow: 5px 5px 0 rgba(255, 140, 0, 0.1);
+        }
+        
+        .safety-title {
+            color: var(--dark-orange);
+            font-size: 2rem;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        .safety-list {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .safety-list li {
+            padding: 15px;
+            background-color: rgba(255, 167, 38, 0.1);
+            border-radius: 10px;
+            position: relative;
+            padding-left: 50px;
+            transition: all 0.3s;
+        }
+        
+        .safety-list li:hover {
+            background-color: rgba(255, 167, 38, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .safety-list li:before {
+            content: "🍕";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .team-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .team-title {
+            font-size: 2.5rem;
+            color: var(--dark-orange);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .team-title:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--light-orange), var(--main-orange), var(--light-orange));
+            border-radius: 5px;
+        }
+        
+        .team-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            max-width: 400px;
+            margin: 0 auto;
+            border: 3px solid var(--light-orange);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(230, 126, 34, 0.3);
+        }
+        
+        .team-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--main-orange);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .team-card h3 {
+            color: var(--dark-orange);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .team-card p {
+            color: var(--black);
+            font-style: italic;
+            margin: 5px 0;
+        }
+        
+        .position {
+            background-color: var(--light-orange);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--main-orange), var(--dark-orange));
+            color: var(--white);
+            border-radius: 20px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="%23FFFFFF" opacity="0.3"/><circle cx="50" cy="50" r="3" fill="%23FFFFFF" opacity="0.3"/><circle cx="80" cy="30" r="3" fill="%23FFFFFF" opacity="0.3"/><circle cx="30" cy="70" r="3" fill="%23FFFFFF" opacity="0.3"/><circle cx="70" cy="80" r="3" fill="%23FFFFFF" opacity="0.3"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer h2 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .footer p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin: 0 10px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.5s;
+        }
+        
+        .delay-2 {
+            animation-delay: 1s;
+        }
+        
+        .pizza-bg {
+            position: absolute;
+            font-size: 10rem;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .pizza-1 {
+            top: 50px;
+            left: 50px;
+            animation: spin 30s linear infinite;
+        }
+        
+        .pizza-2 {
+            bottom: 100px;
+            right: 100px;
+            animation: spin 40s linear infinite reverse;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .story-section {
+                padding: 20px;
+            }
+            
+            .team-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pizza-bg pizza-1">🍕</div>
+        <div class="pizza-bg pizza-2">🍕</div>
+        
+        <div class="header">
+            <div class="header-content">
+                <h1>PizzaNo</h1>
+                <p>Оранжевое настроение с 2008 года!</p>
+            </div>
+        </div>
+        
+        <div class="pizza-divider">
+            <div class="line"></div>
+            <div class="icon">🔥</div>
+            <div class="line"></div>
+        </div>
+        
+        <div class="story-section">
+            <h2 class="story-title">Наша невероятная история</h2>
+            <p>В далёком <span class="highlight">2008 году</span> на самой <span class="highlight">Высокой Горе</span> появилось маленькое кафе, где один человек — <span class="highlight">Даниэль</span> — решил делать всё сам: от замеса теста до доставки. Так родилась PizzaNo!</p>
+            
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="SSS/images/Первая пиццерия.png" alt="Первая пиццерия">
+                </div>
+                <div class="image-item">
+                    <img src="SSS/images/Делать пицца.png" alt="Даниэль за работой">
+                </div>
+                <div class="image-item">
+                    <img src="SSS/images/Первая пицца.png" alt="Первая пицца">
+                </div>
+            </div>
+            
+            <div class="fun-fact">
+                <h3>Секрет PizzaNo</h3>
+                <p>Наша фирменная фишка — <span class="highlight">"Оранжевое настроение"</span>! Мы добавляем в тесто немного тыквы и куркумы, что придаёт пицце не только уникальный вкус, но и тот самый солнечный цвет.</p>
+            </div>
+            
+            <p>Сейчас PizzaNo — это всё так же в основном <span class="highlight">Даниэль</span>, но уже с небольшой командой помощников. Мы по-прежнему на Высокой Горе и по-прежнему делаем всё с той же страстью, что и в первый день!</p>
+        </div>
+        
+        <div class="story-section">
+            <h2 class="story-title">Наша кухня — оранжевый рай</h2>
+            <p>На кухне PizzaNo царит особенная атмосфера творчества и веселья:</p>
+            
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="SSS/images/Печь.png" alt="Дровяная печь">
+                </div>
+                <div class="image-item">
+                    <img src="SSS/images/Свежие ингрендиенты.png" alt="Свежие ингредиенты">
+                </div>
+                <div class="image-item">
+                    <img src="SSS/images/Приготовление.png" alt="Процесс приготовления">
+                </div>
+            </div>
+            
+            <div class="safety-section">
+                <h3 class="safety-title">Наши принципы работы</h3>
+                <ul class="safety-list">
+                    <li>Только свежие продукты с местных ферм</li>
+                    <li>Ручной замес теста по утрам</li>
+                    <li>Дровяная печь для аутентичного вкуса</li>
+                    <li>Оранжевые фартуки — наш фирменный стиль</li>
+                    <li>Музыка на кухне — только позитивная</li>
+                    <li>Каждая пицца получает имя перед отправкой</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="team-section">
+            <h2 class="team-title">Наша команда (она же — Даниэль)</h2>
+            
+            <div class="team-card">
+                <img src="SSS/images/Красавец.jpeg" alt="Даниэль">
+                <div class="position">Основатель и Всё-в-одном</div>
+                <h3>Даниэль</h3>
+                <p>"Я — PizzaNo!"</p>
+                <p>Шеф-повар, доставщик, уборщик, кассир, маркетолог, менеджер и даже посудомойка</p>
+                <p>В профессии с 2008 года</p>
+            </div>
+        </div>
+        
+        <div class="pizza-divider">
+            <div class="line"></div>
+            <div class="icon floating">🍕</div>
+            <div class="line"></div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-content">
+                <h2>Приезжайте на Высокую Гору!</h2>
+                <p>Мы находимся на самом вершине — вид потрясающий, а пицца ещё лучше!</p>
+                <p>⏰ Ежедневно с 11:00 до 23:00</p>
+                <div style="margin: 20px 0;">
+                    <span class="contact-icon">📱</span>
+                    <span class="contact-icon delay-1">📞</span>
+                    <span class="contact-icon delay-2">✉️</span>
+                </div>
+                <p>PizzaNo — оранжевое настроение в каждой коробке!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

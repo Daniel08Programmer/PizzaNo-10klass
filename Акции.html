@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="SSS\images\icon akc.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции</title>
+    <style>
+        /* Основные стили из вашего сайта */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .promo-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #e74c3c;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: #e74c3c;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Сетка акций */
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 15px;
+        }
+        
+        /* Стили карточек акций */
+        .promo-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .promo-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .promo-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .promo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .promo-card:hover .promo-image img {
+            transform: scale(1.1);
+        }
+        
+        .promo-content {
+            padding: 20px;
+        }
+        
+        .promo-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #e74c3c;
+        }
+        
+        .promo-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .promo-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .promo-old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+        
+        .promo-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .promo-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Специальные стили для разных типов акций */
+        .promo-special .promo-badge {
+            background: #f39c12;
+        }
+        
+        .promo-new .promo-badge {
+            background: #27ae60;
+        }
+        
+        .promo-limited .promo-badge {
+            background: #9b59b6;
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .promo-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .promo-card:nth-child(1) { animation-delay: 0.1s; }
+        .promo-card:nth-child(2) { animation-delay: 0.2s; }
+        .promo-card:nth-child(3) { animation-delay: 0.3s; }
+        .promo-card:nth-child(4) { animation-delay: 0.4s; }
+        .promo-card:nth-child(5) { animation-delay: 0.5s; }
+        .promo-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Таймер для акции */
+        .promo-timer {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .timer-text {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="promo-section">
+        <h2 class="section-title">Горячие акции</h2>
+        
+        <div class="promo-grid">
+            <!-- Акция 1 -->
+            <div class="promo-card promo-new">
+                <div class="promo-badge">Новинка</div>
+                <div class="promo-image">
+                    <img src="SSS/images/PEPE.png" alt="Пицца Пепперони">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Пицца Пепперони</h3>
+                    <p class="promo-description">Острая пицца с двойной порцией пепперони и сыром моцарелла</p>
+                    <div class="promo-price">
+                        599 ₽ <span class="promo-old-price">799 ₽</span>
+                    </div>
+                    <div class="promo-timer">
+                        До конца акции: <span class="timer-text">2 дня 12:34:56</span>
+                    </div>
+                    <a href="#" class="promo-button">Заказать со скидкой</a>
+                </div>
+            </div>
+            
+            <!-- Акция 2 -->
+            <div class="promo-card promo-special">
+                <div class="promo-badge">Спецпредложение</div>
+                <div class="promo-image">
+                    <img src="SSS/images/Mortal Combo.png" alt="Комбо Обед">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Комбо Обед</h3>
+                    <p class="promo-description">Пицца + салат + напиток + десерт. Идеальный обеденный набор</p>
+                    <div class="promo-price">
+                        899 ₽ <span class="promo-old-price">1299 ₽</span>
+                    </div>
+                    <a href="#" class="promo-button">Выбрать комбо</a>
+                </div>
+            </div>
+            
+            <!-- Акция 3 -->
+            <div class="promo-card promo-limited">
+                <div class="promo-badge">Ограниченно</div>
+                <div class="promo-image">
+                    <img src="SSS/images/Family dinner.png" alt="Семейный Ужин">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Семейный Ужин</h3>
+                    <p class="promo-description">2 большие пиццы + закуска + 2 напитка. Для всей семьи!</p>
+                    <div class="promo-price">
+                        1499 ₽ <span class="promo-old-price">2199 ₽</span>
+                    </div>
+                    <a href="#" class="promo-button">Заказать набор</a>
+                </div>
+            </div>
+            
+            <!-- Акция 4 -->
+            <div class="promo-card">
+                <div class="promo-image">
+                    <img src="SSS/images/Desert.png" alt="Десерт в подарок">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Десерт в подарок</h3>
+                    <p class="promo-description">При заказе от 1500 ₽ - вкусный десерт в подарок!</p>
+                    <div class="promo-price">
+                        Бесплатно
+                    </div>
+                    <a href="#" class="promo-button">Подробнее</a>
+                </div>
+            </div>
+            
+            <!-- Акция 5 -->
+            <div class="promo-card promo-special">
+                <div class="promo-badge">Хит</div>
+                <div class="promo-image">
+                    <img src="SSS/images/2 по цене 2.png" alt="Двойная Пицца">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Двойная Пицца</h3>
+                    <p class="promo-description">Две пиццы по цене одной! Выбор из 5 вариантов</p>
+                    <div class="promo-price">
+                        799 ₽ <span class="promo-old-price">1598 ₽</span>
+                    </div>
+                    <a href="#" class="promo-button">Выбрать пиццы</a>
+                </div>
+            </div>
+            
+            <!-- Акция 6 -->
+            <div class="promo-card promo-new">
+                <div class="promo-badge">Новинка</div>
+                <div class="promo-image">
+                    <img src="SSS/images/Time.png" alt="Вечерняя Скидка">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Вечерняя Скидка</h3>
+                    <p class="promo-description">С 20:00 до 23:00 - скидка 30% на все пиццы!</p>
+                    <div class="promo-price">
+                        -30%
+                    </div>
+                    <div class="promo-timer">
+                        До конца сегодня: <span class="timer-text">05:34:21</span>
+                    </div>
+                    <a href="#" class="promo-button">Заказать сейчас</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Простой таймер для демонстрации
+        function updateTimers() {
+            const timers = document.querySelectorAll('.timer-text');
+            timers.forEach(timer => {
+                // Для демонстрации просто уменьшаем время на 1 секунду
+                if (timer.dataset.seconds) {
+                    let seconds = parseInt(timer.dataset.seconds) - 1;
+                    if (seconds < 0) seconds = 86400; // Сбрасываем через сутки для демо
+                    timer.dataset.seconds = seconds;
+                    
+                    const hours = Math.floor(seconds / 3600);
+                    const minutes = Math.floor((seconds % 3600) / 60);
+                    const secs = seconds % 60;
+                    
+                    timer.textContent = `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                } else {
+                    // Инициализация случайного времени для демо
+                    const hours = Math.floor(Math.random() * 2);
+                    const minutes = Math.floor(Math.random() * 60);
+                    const secs = Math.floor(Math.random() * 60);
+                    const totalSeconds = hours * 3600 + minutes * 60 + secs;
+                    timer.dataset.seconds = totalSeconds;
+                    timer.textContent = `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                }
+            });
+        }
+        
+        // Обновляем таймеры каждую секунду
+        setInterval(updateTimers, 1000);
+        updateTimers(); // Первый запуск
+    </script>
+</body>
+</html>

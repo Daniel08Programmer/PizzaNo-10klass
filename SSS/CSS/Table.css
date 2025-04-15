@@ -1,0 +1,61 @@
+#table{
+	text-align: center;
+	margin: 10px 30px 10px 30px auto;
+}
+
+table{
+	text-align: center;
+    font-size: 25px;;
+    /* margin: 10px 30px 10px 30px auto; */
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 80%;
+    /* text-transform: capitalize; */
+
+	margin: 0 auto;      /* Центрирование по горизонтали */
+  margin-left: 185px;   /* Отступ слева */
+  /* margin-right: 300px;  Отступ справа */
+  border-collapse: collapse; /* Опционально: убирает двойные границы */
+}
+
+th{
+    border: 5px solid black;
+    padding: 20px;
+    background-color: var(--b);
+    transition: transform 2s ease;
+}
+
+th:hover{
+    transform: scale(1.65);
+}
+
+
+#Pizza{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+#Drink{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+#first_th{
+    margin-left: 50px;
+}
+
+.anchor{
+    color: red;
+    font-style: italic;
+    text-decoration: none;
+    
+}	
+    
+.anchor:hover{
+    
+    color: green;    
+ }
+
+/* #last_th{
+    border-right: 0px;
+} */

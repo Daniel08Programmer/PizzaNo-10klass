@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "Гавайская",
+        "weight": 250,
+        "dia": 25,
+        "price": 210,
+        "imgSrc": "SSS/Гавайская.jpeg"
+    },
+    {
+        "id": 2,
+        "title": "Охотничья",
+        "weight": 270,
+        "dia": 25,
+        "price": 250,
+        "imgSrc": "SSS/ohotnichiya.jpeg"
+    },
+    {
+        "id": 3,
+        "title": "Бьянко",
+        "weight": 370,
+        "dia": 35,
+        "price": 290,
+        "imgSrc": "SSS/p2.png"
+    },
+    {
+        "id": 4,
+        "title": "Мясная",
+        "weight": 410,
+        "dia": 45,
+        "price": 330,
+        "imgSrc": "SSS/p3.png"
+    }
+]
